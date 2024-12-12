@@ -125,6 +125,32 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+.div-container{
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: start; /*Empêche la redistribution de l'espace entre les boutons */
+	justify-content: center; /* Centre tous les enfants */
+	margin: 35px auto;
+}
+
+.div-container > * {
+	padding: 10px 20px;
+	border: 1px solid #1D6154;
+	border-radius: 25px;
+	font-family: 'Syne';
+	color: #1D6154;
+	cursor: pointer;
+	margin: 5px;
+}
+
+.div-container > *:hover{
+	background-color: #1D6154;
+	color: white;
+}
+
+
 .gallery {
 	width: 100%;
 	display: grid;
