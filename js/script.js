@@ -23,14 +23,17 @@ async function getWorks() { // fonction asynchrone pour gérer les opérations n
 // Appelle la fonction principale pour récupérer les travaux et les afficher
 getWorks();
 
+
 // Fonction pour créer une balise <figure> et l'ajouter à la galerie
 function setFigure(data) {
     const figure = document.createElement("figure");     // Crée une nouvelle balise <figure>
     // Ajoute une image et une légende (<figcaption>) à la balise <figure>
     figure.innerHTML = `<img src=${data.imageUrl} alt=${data.title}>     
     <figcaption>${data.title}</figcaption>`;
+    figure.setAttribute('data-category', data.categoryId); // Ajoute un attribut data-category pour identifier la catégorie
     document.querySelector(".gallery").append(figure);     // Ajoute la figure dans l'élément avec la classe CSS "gallery"
 }
+
 
 async function getCategories() { // fonction asynchrone pour gérer les opérations nécessitant des délais
     const url = "http://localhost:5678/api/categories"; // Définit l'URL de l'API qui retourne les données des categories (URL issue du Swagger Get/Works/categories)
@@ -43,6 +46,17 @@ async function getCategories() { // fonction asynchrone pour gérer les opérati
         const json = await response.json(); // si réussie, fetch la réponse au format json
         console.log(json);
 
+        // Ajoute la catégorie "Tous" avec l'ID 0
+        const allCategories = [{ id: 0, name: "Tous" }, ...json];
+
+        // Ajoute un écouteur d'événement pour le bouton "Tous"
+        document.getElementById("filter-all").addEventListener("click", () => {
+            const figures = document.querySelectorAll(".gallery figure");
+            figures.forEach(figure => {
+                figure.style.display = "block"; // Affiche toutes les figures
+            });
+        });
+
         // Parcourt chaque élément du tableau JSON
         for (let i = 0; i < json.length; i++) {
             // Appelle la fonction pour créer un filtre pour chaque élément
@@ -54,9 +68,19 @@ async function getCategories() { // fonction asynchrone pour gérer les opérati
 }
 getCategories();
 
+
 function setFilter(data) {
     const div = document.createElement("div");     // Crée une nouvelle balise <div>
-    div.addEventListener("click, ")
-    div.innerHTML = data.name; // Ajoute une div enfant de la div-container
-    document.querySelector(".div-container").append(div);
+    div.innerHTML = data.name; // Définit le contenu de la div avec le nom de la catégorie
+    div.addEventListener("click", () => {
+        const figures = document.querySelectorAll(".gallery figure");
+        figures.forEach(figure => {
+            if (figure.getAttribute('data-category') === data.id.toString() || data.id === 0) { //  Vérifie si la catégorie de la figure correspond à la catégorie cliquée. toString() convertit le nombre en chaîne de caractères. data.id === 0 pour la catégorie "Tous"
+                figure.style.display = "block"; // Affiche les figures de la catégorie
+            } else {
+                figure.style.display = "none"; // Cache les autres figures
+            }
+        });
+    });
+    document.querySelector(".div-container").append(div); // Ajoute une div enfant de la div-container
 }

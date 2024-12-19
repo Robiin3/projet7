@@ -212,3 +212,57 @@ footer nav ul {
 	margin: 2em
 }
 
+/* Annule la mise en forme par défaut des liens */
+header a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*  PAGE LOGIN */
+
+.login-page h2 {
+    text-align: center; /* Centre le contenu horizontalement */
+}
+
+.login-page #login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.login-page #login-form form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.login-page #login-form label {
+    margin-top: 10px;
+    font-family: 'Syne';
+}
+
+.login-page #login-form input[type="email"],
+.login-page #login-form input[type="password"] {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.login-page #login-form input[type="submit"] {
+    margin-top: 20px;
+    padding: 10px;
+    font-family: 'Syne';
+    color: white;
+    background-color: #1D6154;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.login-page footer {
+    margin-top: 400px;
+}
+
