@@ -222,6 +222,7 @@ header a {
 
 .login-page h2 {
     text-align: center; /* Centre le contenu horizontalement */
+	margin-top: 100px; /* Ajoute de l'espace au-dessus de Log In */
 }
 
 .login-page #login-form {
@@ -234,17 +235,17 @@ header a {
 .login-page #login-form form {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 379px;
 }
 
 .login-page #login-form label {
-    margin-top: 10px;
-    font-family: 'Syne';
+    margin-top: 15px;
+	font-family: 'Work Sans';
 }
 
 .login-page #login-form input[type="email"],
 .login-page #login-form input[type="password"] {
-    padding: 10px;
+    padding: 15px 10px;
     margin-top: 5px;
     border: 1px solid transparent;
     border-radius: 5px;
@@ -252,7 +253,7 @@ header a {
 }
 
 .login-page #login-form input[type="submit"] {
-    margin-top: 20px;
+    margin-top: 30px;
     padding: 10px;
     font-family: 'Syne';
     color: white;
@@ -262,7 +263,13 @@ header a {
     cursor: pointer;
 }
 
+.login-page #login-form label[for="password"] {
+    margin-top: 30px; /* Augmente l'espace au-dessus de "Mot de passe" */
+}
+
 .login-page footer {
-    margin-top: 400px;
+    margin-top: 320px;
+	font-size: 12px;
+
 }
 
