@@ -290,7 +290,6 @@ header a {
 	display: flex;
 	justify-content: center; /* Centre "Mes projets" horizontalement */
 	align-items: center;
-	padding-left: 100px;
 }
 
 .edit {
@@ -300,7 +299,7 @@ header a {
 	font-size: 16px;
 	color: #000; /* Couleur noire */
 	position: absolute;
-	right: -20px; /* Positionne "modifier" à droite du texte */
+	right: 35%; /* Aligner à droite */
 }
 
 
