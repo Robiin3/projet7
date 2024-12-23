@@ -34,6 +34,7 @@ function setFigure(data) {
     document.querySelector(".gallery").append(figure);     // Ajoute la figure dans l'élément avec la classe CSS "gallery"
 }
 
+// GESTION DES CATEGORIES et FILTRES
 
 async function getCategories() { // fonction asynchrone pour gérer les opérations nécessitant des délais
     const url = "http://localhost:5678/api/categories"; // Définit l'URL de l'API qui retourne les données des categories (URL issue du Swagger Get/Works/categories)
@@ -55,6 +56,7 @@ async function getCategories() { // fonction asynchrone pour gérer les opérati
             figures.forEach(figure => {
                 figure.style.display = "block"; // Affiche toutes les figures
             });
+            setActiveFilter(document.getElementById("filter-all")); // Définit le bouton "Tous" comme actif
         });
 
         // Parcourt chaque élément du tableau JSON
@@ -81,8 +83,42 @@ function setFilter(data) {
                 figure.style.display = "none"; // Cache les autres figures
             }
         });
+        setActiveFilter(div); // Définit le bouton cliqué comme actif
     });
     document.querySelector(".div-container").append(div); // Ajoute une div enfant de la div-container
 }
 
+function setActiveFilter(activeDiv) {
+    // Supprime la classe active de tous les boutons de filtre
+    const filters = document.querySelectorAll(".div-container > div");
+    filters.forEach(filter => {
+        filter.classList.remove("active");
+    });
 
+    // Ajoute la classe active au bouton de filtre cliqué
+    activeDiv.classList.add("active");
+}
+
+// GESTION LOGIN/LOGOUT
+
+const loginLogoutLink = document.getElementById("login-logout");
+const token = localStorage.getItem("token"); // Récupère le token stocké dans le localStorage
+
+// Hide the "modifier" button by default
+document.getElementById("modifier").style.display = "none";
+
+if (token) { // Si le token existe
+    loginLogoutLink.textContent = "logout"; // Modifie le texte
+    loginLogoutLink.href = "#"; // Pour que le lien ne redirige pas vers une autre page
+    loginLogoutLink.addEventListener("click", () => { // Ecouteur d'événement pour la déconnexion
+        localStorage.removeItem("token"); // Supprime le token du localStorage
+        window.location.href = "index.html"; // Redirige vers la page d'accueil
+    });
+    document.querySelector(".div-container").style.display = "none";
+    document.getElementById("modifier").style.display = "block";
+} else {
+    loginLogoutLink.textContent = "login"; // Modifie le texte
+    loginLogoutLink.href = "login.html"; // Redirige vers la page de connexion
+    document.querySelector(".div-container").style.display = "flex";
+    document.getElementById("modifier").style.display = "none";
+}

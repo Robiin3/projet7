@@ -150,6 +150,12 @@ li:hover {
 	color: white;
 }
 
+.div-container > .active { /* Style bouton actif */
+    background-color: #1D6154;
+    color: white;
+}
+
+
 
 .gallery {
 	width: 100%;
@@ -270,5 +276,42 @@ header a {
 .login-page footer {
     margin-top: 320px;
 	font-size: 12px;
+}
+
+
+
+
+
+
+
+
+.portfolio-header {
+	position: relative; /* Permet d'utiliser positionnement absolu si nécessaire */
+	display: flex;
+	justify-content: center; /* Centre "Mes projets" horizontalement */
+	align-items: center;
+	padding-left: 100px;
+}
+
+.edit {
+	display: flex;
+	align-items: center;
+	gap: 150px; /* Espacement entre l'icône et le texte */
+	font-size: 16px;
+	color: #000; /* Couleur noire */
+	position: absolute;
+	right: -20px; /* Positionne "modifier" à droite du texte */
+}
+
+
+.portfolio-header h2 {
+	margin-right: 10px;
+}
+
+
+
+#modifier:hover {
+	background-color: #1D6154;
+	color: white;
 }
 
