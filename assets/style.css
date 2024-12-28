@@ -353,6 +353,28 @@ h3 {
 	padding: 4px 4px;
 }
 
+#add-photo-button {
+	display: block;
+	margin: 20px auto;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	border: none;
+	border-radius: 60px;
+	cursor: pointer;
+	width: 237px;
+	height: 36px;
+}
+
+.divider { /* Ligne de séparation */
+	width: 490px;
+	border: 1px solid #B3B3B3; /* Couleur et épaisseur de la ligne */
+	margin-top: 60px;
+	margin-bottom: 40px;
+}
+
+
 /* Section "modifier" */
 
 .container-projets {
@@ -375,6 +397,8 @@ h3 {
 	width: 20px;
 	height: 20px;
   }
+
+
 
 
 
