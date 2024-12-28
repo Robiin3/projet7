@@ -31,7 +31,37 @@ function setFigure(data) {
     figure.innerHTML = `<img src=${data.imageUrl} alt=${data.title}>     
     <figcaption>${data.title}</figcaption>`;
     figure.setAttribute('data-category', data.categoryId); // Ajoute un attribut data-category pour identifier la catégorie
+    figure.setAttribute('data-id', data.id); // Ajoute un attribut data-id pour identifier l'élément
     document.querySelector(".gallery").append(figure);     // Ajoute la figure dans l'élément avec la classe CSS "gallery"
+
+    // Crée une figure sans texte pour la modale
+    const modalFigure = document.createElement("figure"); // Crée une nouvelle balise <figure>
+    modalFigure.innerHTML = `<img src=${data.imageUrl} alt=${data.title}>
+    <i class="fa-regular fa-trash-can delete-icon"></i>`; // Icône de corbeille
+    modalFigure.setAttribute('data-category', data.categoryId); // Ajoute un attribut data-category pour identifier la catégorie
+    modalFigure.setAttribute('data-id', data.id); // Ajoute un attribut data-id pour identifier l'élément
+    document.querySelector(".modal-gallery").append(modalFigure); // Ajoute la figure dans la modale
+
+    // Ajoute un écouteur d'événement pour supprimer la figure
+    modalFigure.querySelector(".delete-icon").addEventListener("click", async () => {
+        const id = data.id;
+        try {
+            const response = await fetch(`http://localhost:5678/api/works/${id}`, { // Envoie une requête DELETE à l'API
+                method: 'DELETE', 
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            });
+            if (response.ok) {
+                figure.remove(); // Supprime la figure de la galerie
+                modalFigure.remove(); // Supprime la figure de la modale
+            } else { 
+                console.error('Suppression figure depuis API impossible'); // Affiche un message d'erreur
+            }
+        } catch (error) { 
+            console.error('Error:', error);
+        }
+    });
 }
 
 // GESTION DES CATEGORIES et FILTRES
@@ -51,13 +81,17 @@ async function getCategories() { // fonction asynchrone pour gérer les opérati
         const allCategories = [{ id: 0, name: "Tous" }, ...json];
 
         // Ajoute un écouteur d'événement pour le bouton "Tous"
-        document.getElementById("filter-all").addEventListener("click", () => {
+        const filterAllButton = document.getElementById("filter-all");
+        filterAllButton.addEventListener("click", () => {
             const figures = document.querySelectorAll(".gallery figure");
             figures.forEach(figure => {
                 figure.style.display = "block"; // Affiche toutes les figures
             });
-            setActiveFilter(document.getElementById("filter-all")); // Définit le bouton "Tous" comme actif
+            setActiveFilter(filterAllButton); // Définit le bouton "Tous" comme actif
         });
+
+        // Définit le bouton "Tous" comme actif par défaut
+        setActiveFilter(filterAllButton);
 
         // Parcourt chaque élément du tableau JSON
         for (let i = 0; i < json.length; i++) {
@@ -72,7 +106,7 @@ getCategories();
 
 
 function setFilter(data) {
-    const div = document.createElement("div");     // Crée une nouvelle balise <div>
+    const div = document.createElement("div"); // Crée une nouvelle balise <div>
     div.innerHTML = data.name; // Définit le contenu de la div avec le nom de la catégorie
     div.addEventListener("click", () => {
         const figures = document.querySelectorAll(".gallery figure");
@@ -104,7 +138,7 @@ function setActiveFilter(activeDiv) {
 const loginLogoutLink = document.getElementById("login-logout");
 const token = localStorage.getItem("token"); // Récupère le token stocké dans le localStorage
 
-// Hide the "modifier" button by default
+// Cache le bouton "modifier" par defaut
 document.getElementById("modifier").style.display = "none";
 
 if (token) { // Si le token existe
@@ -116,9 +150,29 @@ if (token) { // Si le token existe
     });
     document.querySelector(".div-container").style.display = "none";
     document.getElementById("modifier").style.display = "block";
+    document.getElementById("modifier").addEventListener("click", () => {
+        // Ouvre la fenêtre modale
+        document.querySelector(".modal").style.display = "block";
+    });
 } else {
     loginLogoutLink.textContent = "login"; // Modifie le texte
     loginLogoutLink.href = "login.html"; // Redirige vers la page de connexion
     document.querySelector(".div-container").style.display = "flex";
     document.getElementById("modifier").style.display = "none";
 }
+
+// Ferme la modale - bouton croix
+document.querySelector(".close-button").addEventListener("click", () => {
+    document.querySelector(".modal").style.display = "none";
+});
+
+// Ferme la modale -  clic overlay
+window.addEventListener("click", (event) => {
+    if (event.target.classList.contains('modal')) {
+        document.querySelector(".modal").style.display = "none";
+    }
+});
+
+
+
+

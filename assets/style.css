@@ -101,6 +101,7 @@ li:hover {
 #introduction {
 	display: flex;
 	align-items: center;
+	max-width: 1090px;
 }
 #introduction figure {
 	flex: 1
@@ -155,10 +156,9 @@ li:hover {
     color: white;
 }
 
-
-
 .gallery {
-	width: 100%;
+	margin: auto;
+	width: 90%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
@@ -224,6 +224,8 @@ header a {
     color: inherit;
 }
 
+
+
 /*  PAGE LOGIN */
 
 .login-page h2 {
@@ -278,39 +280,106 @@ header a {
 	font-size: 12px;
 }
 
-
-
-
-
-
-
-
-.portfolio-header {
-	position: relative; /* Permet d'utiliser positionnement absolu si nécessaire */
-	display: flex;
-	justify-content: center; /* Centre "Mes projets" horizontalement */
-	align-items: center;
+.active-menu {
+    font-weight: bold;
 }
+
+/* MODALE */
+.modal {
+	display: none; /* Invisible par défaut */
+	position: fixed; /* Reste en place */
+	z-index: 1; /* Place la modale au-dessus de tout */
+	left: 0; /* Positionne la modale en haut à gauche */
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto; /* Ajoute scrollbar si nécessaire */
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.4); /* Opacité */
+}
+
+.modal-content {
+	background-color: white;
+	margin: 15% auto; /* Centre la modale */
+	padding: 20px;
+	width: 630px;
+	Height: 688px;
+	border-radius: 10px;
+}
+
+.close-button {
+	color: black;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+h3 {
+	font-family: 'Work Sans';
+	font-size: 26px;
+	color: black;
+	text-align: center;
+	margin: 40px;
+}
+
+/* Galerie modale */
+.modal-gallery {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 30px 10px; /* Espacement entre les images */
+	margin-left: 70px;
+	margin-right: 70px;
+}
+
+.modal-gallery figure {
+	position: relative;
+	margin: 0;
+	width: 18%;
+}
+
+.modal-gallery img {
+	width: 100%;
+}
+
+.delete-icon {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	color: white;
+	cursor: pointer;
+	font-size: 11px;
+	background-color: black;
+	padding: 4px 4px;
+}
+
+/* Section "modifier" */
+
+.container-projets {
+	display: flex; /* Active Flexbox */
+	align-items: center; /* Aligne verticalement "Mes projets" et "modifier" */
+	justify-content: center; /* Centre horizontalement l'ensemble */
+	gap: 15px; /* Espacement entre "Mes projets" et "modifier" */
+  }
 
 .edit {
-	display: flex;
+	display: flex; /* Aligne l'icône et le texte */
 	align-items: center;
-	gap: 150px; /* Espacement entre l'icône et le texte */
+	gap: 8px; /* Espacement entre l'icône et le texte */
 	font-size: 16px;
-	color: #000; /* Couleur noire */
-	position: absolute;
-	right: 35%; /* Aligner à droite */
-}
+	color: #000;
+  }
+  
+  /* Icône */
+  .icon {
+	width: 20px;
+	height: 20px;
+  }
 
 
-.portfolio-header h2 {
-	margin-right: 10px;
-}
 
 
 
-#modifier:hover {
-	background-color: #1D6154;
-	color: white;
-}
+
+
 

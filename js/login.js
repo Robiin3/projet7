@@ -33,3 +33,11 @@ console.log(loginForm);
             alert("Les informations utilisateur / mot de passe ne sont pas correctes"); 
         }
     });
+
+        // Met en gras le menu actif login
+        document.addEventListener("DOMContentLoaded", function() {
+            const loginLink = document.querySelector('a[href="login.html"]');
+            if (loginLink) {
+                loginLink.classList.add("active-menu");
+            }
+        });
