@@ -142,6 +142,12 @@ const token = localStorage.getItem("token"); // Récupère le token stocké dans
 document.getElementById("modifier").style.display = "none";
 
 if (token) { // Si le token existe
+    // Crée et ajoute la bannière en mode édition
+    const editModeBanner = document.createElement("div"); // Crée une nouvelle balise <div>
+    editModeBanner.id = "edit-mode-banner";
+    editModeBanner.innerHTML = `<i class="fa-regular fa-pen-to-square"></i><span>Mode édition</span>`;
+    document.body.insertBefore(editModeBanner, document.body.firstChild); // Insère la bannière en premier élément du body
+
     loginLogoutLink.textContent = "logout"; // Modifie le texte
     loginLogoutLink.href = "#"; // Pour que le lien ne redirige pas vers une autre page
     loginLogoutLink.addEventListener("click", () => { // Ecouteur d'événement pour la déconnexion
