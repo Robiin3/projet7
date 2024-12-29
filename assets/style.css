@@ -403,6 +403,8 @@ h3 {
 	align-items: center; /* Aligne verticalement "Mes projets" et "modifier" */
 	justify-content: center; /* Centre horizontalement l'ensemble */
 	gap: 15px; /* Espacement entre "Mes projets" et "modifier" */
+	padding-top: 60px;
+	padding-bottom: 50px;
 }
 
 .edit {
