@@ -86,9 +86,16 @@
 		<span class="back-button"><i class="fa-solid fa-arrow-left"></i></span>
 		<span class="close-button">&times;</span>
 		<h3>Ajout photo</h3>
-		<!-- Contenu de la modale d'ajout de photo -->
+		<!-- Contenu de la modale -->
 		<form id="add-photo-form">
-			<!-- Form fields for adding a photo -->
+			<label for="photo-title">Titre</label>
+			<input type="text" id="photo-title" name="photo-title">
+			
+			<label for="photo-category">Catégorie</label>
+			<select id="photo-category" name="photo-category">
+				<option value="" selected disabled></option> <!-- champ vide -->
+				<!-- Les catégorie seront ajoutées via JS -->
+			</select>
 		</form>
 		<hr class="divider">
 		<button class="button" id="validate-photo-button">Valider</button>

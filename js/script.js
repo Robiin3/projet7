@@ -193,6 +193,28 @@ document.querySelector(".back-button").addEventListener("click", () => {
     document.querySelector("#gallery-modal").style.display = "flex";
 });
 
+// Liste déroulante des catégories
+async function CategoryListChoice() {
+    const url = "http://localhost:5678/api/categories";
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const categories = await response.json();
+        const categorySelect = document.getElementById("photo-category");
+        categories.forEach(category => {
+            const option = document.createElement("option");
+            option.value = category.id;
+            option.textContent = category.name;
+            categorySelect.appendChild(option);
+        });
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+CategoryListChoice();
+
 
 
 
