@@ -158,7 +158,7 @@ if (token) { // Si le token existe
     document.getElementById("modifier").style.display = "block";
     document.getElementById("modifier").addEventListener("click", () => {
         // Ouvre la fenêtre modale
-        document.querySelector(".modal").style.display = "block";
+        document.querySelector("#gallery-modal").style.display = "block";
     });
 } else {
     loginLogoutLink.textContent = "login"; // Modifie le texte
@@ -168,15 +168,29 @@ if (token) { // Si le token existe
 }
 
 // Ferme la modale - bouton croix
-document.querySelector(".close-button").addEventListener("click", () => {
-    document.querySelector(".modal").style.display = "none";
+document.querySelectorAll(".close-button").forEach(button => {
+    button.addEventListener("click", () => {
+        button.closest(".modal").style.display = "none";
+    });
 });
 
-// Ferme la modale -  clic overlay
+// Ferme la modale - clic overlay
 window.addEventListener("click", (event) => {
     if (event.target.classList.contains('modal')) {
-        document.querySelector(".modal").style.display = "none";
+        event.target.style.display = "none";
     }
+});
+
+// Ouvre la nouvelle modale d'ajout de photo
+document.getElementById("add-photo-button").addEventListener("click", () => {
+    document.querySelector("#gallery-modal").style.display = "none";
+    document.querySelector("#add-photo-modal").style.display = "flex";
+});
+
+// Bouton de retour modale d'ajout de photo
+document.querySelector(".back-button").addEventListener("click", () => {
+    document.querySelector("#add-photo-modal").style.display = "none";
+    document.querySelector("#gallery-modal").style.display = "flex";
 });
 
 

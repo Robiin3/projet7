@@ -68,15 +68,30 @@
 	</section>
 </main>
 
-<!-- Modale -->
-<div class="modal">
+<!-- Modale Galerie -->
+<div class="modal" id="gallery-modal">
 	<div class="modal-content">
 		<span class="close-button">&times;</span>
 		<h3>Galerie photo</h3>
 		<!-- Contenu de la modale -->
 		<div class="modal-gallery"></div>
 		<hr class="divider">
-		<button id="add-photo-button">Ajouter une photo</button>
+		<button class="button" id="add-photo-button">Ajouter une photo</button>
+	</div>
+</div>
+
+<!-- Modale Ajout Photo -->
+<div class="modal" id="add-photo-modal">
+	<div class="modal-content">
+		<span class="back-button"><i class="fa-solid fa-arrow-left"></i></span>
+		<span class="close-button">&times;</span>
+		<h3>Ajout photo</h3>
+		<!-- Contenu de la modale d'ajout de photo -->
+		<form id="add-photo-form">
+			<!-- Form fields for adding a photo -->
+		</form>
+		<hr class="divider">
+		<button class="button" id="validate-photo-button">Valider</button>
 	</div>
 </div>
 

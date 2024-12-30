@@ -312,7 +312,6 @@ header a {
 	color: black;
 	float: right;
 	font-size: 28px;
-	font-weight: bold;
 	cursor: pointer;
 }
 
@@ -324,7 +323,7 @@ h3 {
 	margin: 40px;
 }
 
-/* Galerie modale */
+/* Modale galerie */
 .modal-gallery {
 	display: flex;
 	flex-wrap: wrap;
@@ -354,7 +353,7 @@ h3 {
 	padding: 4px 4px;
 }
 
-#add-photo-button {
+.button {
 	display: block;
 	margin: 20px auto;
 	font-family: 'Syne';
@@ -373,6 +372,12 @@ h3 {
 	border: 1px solid #B3B3B3; /* Couleur et épaisseur de la ligne */
 	margin-top: 60px;
 	margin-bottom: 40px;
+}
+
+/* Modale ajout photo */
+
+.back-button i {
+	font-size: 21px;
 }
 
 /* Bannière mode édition */
@@ -420,6 +425,8 @@ h3 {
 	width: 20px;
 	height: 20px;
 }
+
+
 
 
 
