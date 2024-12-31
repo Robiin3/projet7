@@ -405,6 +405,49 @@ h3 {
 	cursor: pointer;
 }
 
+.photo-upload-box {
+	background-color: #E8F1F6;
+	border-radius: 2px;
+	text-align: center;
+	margin: auto;
+	width: 420px;
+	height: 155px;
+	padding-top: 15px;
+}
+
+.photo-upload-box i {
+	font-size: 70px;
+	color: #B9C5CC;
+	margin-bottom: 10px;
+}
+
+.photo-upload-box p {
+	font-family: 'Work Sans';
+	font-size: 20px;
+	color: white;
+}
+
+.button-upload-box {
+	display: block;
+	margin: auto;
+	font-family: 'Work Sans';
+	font-weight: 700;
+	color: #306685;
+	background-color: #CBD6DC;
+	border: none;
+	border-radius: 60px;
+	cursor: pointer;
+	width: 173px;
+	height: 36px;
+}
+
+.photo-upload-box p {
+	font-family: 'Work Sans';
+	font-size: 10px;
+	color: #444444;
+	margin-top: 10px;
+}
+
 /* Bannière mode édition */
 #edit-mode-banner {
 	display: flex;
@@ -450,6 +493,8 @@ h3 {
 	width: 20px;
 	height: 20px;
 }
+
+
 
 
 
