@@ -215,6 +215,24 @@ async function CategoryListChoice() {
 }
 CategoryListChoice();
 
+// Miniature bouton ajout image
+document.getElementById("upload-photo-button").addEventListener("change", (event) => { // Ecouteur d'événement pour le changement de fichier
+    const file = event.target.files[0]; // Récupère le fichier sélectionné
+    if (file) { // Si un fichier est sélectionné
+        const reader = new FileReader(); // Crée un objet FileReader
+        reader.onload = (e) => { // Ecouteur d'événement pour la fin du chargement
+            const img = document.createElement("img"); // Crée une nouvelle balise <img>
+            img.src = e.target.result; // Définit la source de l'image
+            img.style.maxWidth = "100%";
+            img.style.maxHeight = "100%";
+            const photoUploadBox = document.querySelector(".photo-upload-box");
+            photoUploadBox.innerHTML = ""; // Efface le contenu de photo-upload-box
+            photoUploadBox.appendChild(img); // Ajoute l'image à la place
+        };
+        reader.readAsDataURL(file); // Lit le contenu du fichier sous forme d'URL de données
+    }
+});
+
 
 
 

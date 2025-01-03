@@ -220,11 +220,10 @@ footer nav ul {
 }
 
 /* Annule la mise en forme par défaut des liens */
-header a {
+header a, #modifier {
     text-decoration: none;
     color: inherit;
 }
-
 
 
 /*  PAGE LOGIN */
@@ -411,8 +410,11 @@ h3 {
 	text-align: center;
 	margin: auto;
 	width: 420px;
-	height: 155px;
-	padding-top: 15px;
+	height: 169px;
+}
+
+.photo-upload-box .fa-image {
+padding-top: 15px;
 }
 
 .photo-upload-box i {
@@ -439,6 +441,12 @@ h3 {
 	cursor: pointer;
 	width: 173px;
 	height: 36px;
+	text-align: center;
+	line-height: 36px;
+}
+
+.button-upload-box[type="file"] {
+	display: none;
 }
 
 .photo-upload-box p {
