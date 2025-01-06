@@ -226,10 +226,57 @@ document.getElementById("upload-photo-button").addEventListener("change", (event
             img.style.maxWidth = "100%";
             img.style.maxHeight = "100%";
             const photoUploadBox = document.querySelector(".photo-upload-box");
+            const inputElement = document.getElementById("upload-photo-button");
+            const labelElement = document.querySelector("label[for='upload-photo-button']");
             photoUploadBox.innerHTML = ""; // Efface le contenu de photo-upload-box
+            photoUploadBox.appendChild(inputElement); // Ré-ajoute l'élément <input> (nécessaire pour la soumission du formulaire)
             photoUploadBox.appendChild(img); // Ajoute l'image à la place
         };
         reader.readAsDataURL(file); // Lit le contenu du fichier sous forme d'URL de données
+    }
+});
+
+
+// Ajouter l'image à la galerie et à l'API
+document.getElementById("validate-photo-button").addEventListener("click", async () => {
+    const title = document.getElementById("photo-title").value; // Récupère le titre de la photo
+    const category = document.getElementById("photo-category").value; // Récupère la catégorie
+    const fileInput = document.getElementById("upload-photo-button"); // Récupère l'élément <input> de type "file"
+    const file = fileInput.files[0]; // Récupère le fichier sélectionné
+
+    if (title && category && file) { // Vérifie si tous les champs sont remplis
+        const formData = new FormData(); // Crée un objet FormData
+        formData.append("title", title); // Ajoute le titre à l'objet FormData
+        formData.append("category", category); // Ajoute la catégorie
+        formData.append("image", file);
+
+        try {
+            const response = await fetch("http://localhost:5678/api/works", { // Envoie une requête POST à l'API
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                },
+                body: formData // Envoie l'objet FormData
+            });
+
+            if (response.ok) {
+                const newWork = await response.json(); // Récupère le travail ajouté
+                setFigure(newWork); // Ajoute la nouvelle figure à la galerie via la fonction SetFigure du départ
+                document.querySelector("#add-photo-modal").style.display = "none"; // Ferme la modale2
+                document.querySelector("#gallery-modal").style.display = "flex"; // Ouvre la modale1 (optionnel)
+                console.log("Photo ajoutée avec succès");
+                alert("Photo ajoutée avec succès !");
+            } else {
+                console.error("Erreur lors de l'ajout de la photo");
+                alert("Erreur lors de l'ajout de la photo");
+            }
+        } catch (error) {
+            console.error("Erreur:", error);
+            alert("Erreur lors de l'ajout de la photo");
+        }
+    } else {
+        console.error("Tous les champs ne sont pas remplis");
+        alert("Tous les champs ne sont pas remplis");
     }
 });
 
