@@ -305,6 +305,7 @@ header a, #modifier {
 	width: 630px;
 	Height: 688px;
 	border-radius: 10px;
+	overflow-y: auto; /* Ajoute une barre de défilement verticale */
 }
 
 .close-button {
