@@ -367,6 +367,12 @@ h3 {
 	height: 36px;
 }
 
+
+.buttondisabled { /* Bouton désactivé */
+    background-color: #A7A7A7; 
+    cursor: not-allowed;
+}
+
 .divider { /* Ligne de séparation */
 	width: 420px;
 	border: 1px solid #B3B3B3; /* Couleur et épaisseur de la ligne */

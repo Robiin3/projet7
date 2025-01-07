@@ -236,6 +236,23 @@ document.getElementById("upload-photo-button").addEventListener("change", (event
     }
 });
 
+// Activer/désactiver le bouton "Valider" en fonction des champs remplis
+function toggleValidateButton() {
+    const title = document.getElementById("photo-title").value;
+    const category = document.getElementById("photo-category").value;
+    const fileInput = document.getElementById("upload-photo-button");
+    const file = fileInput.files[0];
+    const validateButton = document.getElementById("validate-photo-button");
+
+    if (title && category && file) {
+        validateButton.classList.remove("buttondisabled");
+    } else {
+        validateButton.classList.add("buttondisabled");
+    }
+}
+document.getElementById("photo-title").addEventListener("input", toggleValidateButton);
+document.getElementById("photo-category").addEventListener("change", toggleValidateButton);
+document.getElementById("upload-photo-button").addEventListener("change", toggleValidateButton);
 
 // Ajouter l'image à la galerie et à l'API
 document.getElementById("validate-photo-button").addEventListener("click", async () => {
