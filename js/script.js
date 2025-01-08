@@ -171,6 +171,7 @@ if (token) { // Si le token existe
 document.querySelectorAll(".close-button").forEach(button => {
     button.addEventListener("click", () => {
         button.closest(".modal").style.display = "none";
+        clearAddPhotoModal();
     });
 });
 
@@ -178,6 +179,7 @@ document.querySelectorAll(".close-button").forEach(button => {
 window.addEventListener("click", (event) => {
     if (event.target.classList.contains('modal')) {
         event.target.style.display = "none";
+        clearAddPhotoModal();
     }
 });
 
@@ -191,6 +193,7 @@ document.getElementById("add-photo-button").addEventListener("click", () => {
 document.querySelector(".back-button").addEventListener("click", () => {
     document.querySelector("#add-photo-modal").style.display = "none";
     document.querySelector("#gallery-modal").style.display = "flex";
+    clearAddPhotoModal();
 });
 
 // Liste déroulante des catégories
@@ -215,8 +218,9 @@ async function CategoryListChoice() {
 }
 CategoryListChoice();
 
-// Miniature bouton ajout image
-document.getElementById("upload-photo-button").addEventListener("change", (event) => { // Ecouteur d'événement pour le changement de fichier
+
+// Fonction Miniature bouton ajout image
+function handleThumbnailPreview(event) {
     const file = event.target.files[0]; // Récupère le fichier sélectionné
     if (file) { // Si un fichier est sélectionné
         const reader = new FileReader(); // Crée un objet FileReader
@@ -234,7 +238,9 @@ document.getElementById("upload-photo-button").addEventListener("change", (event
         };
         reader.readAsDataURL(file); // Lit le contenu du fichier sous forme d'URL de données
     }
-});
+}
+document.getElementById("upload-photo-button").addEventListener("change", handleThumbnailPreview);
+
 
 // Activer/désactiver le bouton "Valider" en fonction des champs remplis
 function toggleValidateButton() {
@@ -283,6 +289,7 @@ document.getElementById("validate-photo-button").addEventListener("click", async
                 document.querySelector("#gallery-modal").style.display = "flex"; // Ouvre la modale1 (optionnel)
                 console.log("Photo ajoutée avec succès");
                 alert("Photo ajoutée avec succès !");
+                clearAddPhotoModal();
             } else {
                 console.error("Erreur lors de l'ajout de la photo");
                 alert("Erreur lors de l'ajout de la photo");
@@ -296,6 +303,22 @@ document.getElementById("validate-photo-button").addEventListener("click", async
         alert("Tous les champs ne sont pas remplis");
     }
 });
+
+// Fonction pour vider les champs de la modale d'ajout de photo
+function clearAddPhotoModal() { 
+    document.getElementById("photo-title").value = ""; // Efface le titre
+    document.getElementById("photo-category").value = ""; // Efface la catégorie
+    const photoUploadBox = document.querySelector(".photo-upload-box");
+    photoUploadBox.innerHTML = `
+        <i class="fa-regular fa-image"></i>
+        <label for="upload-photo-button" class="button-upload-box">+ Ajouter une photo</label>
+        <input type="file" id="upload-photo-button" class="button-upload-box" accept="image/png, image/jpeg">
+        <p>jpg, png : 4mo max</p>
+    `;
+    document.getElementById("upload-photo-button").addEventListener("change", handleThumbnailPreview); // Ré-attache l'écouteur d'événement pour la fct Miniature bouton ajout image
+}
+
+
 
 
 
