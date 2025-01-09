@@ -52,7 +52,6 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
-	margin-top: 80px;
 }
 header {
 	display: flex;
@@ -468,16 +467,16 @@ padding-top: 15px;
 	align-items: center;
 	justify-content: center;
 	background-color: black;
-	color: white;
-	padding: 15px;
+	color: #FFFFFF;
+	padding: 21px;
 	font-family: 'Work Sans';
-	font-size: 15px;
-	position: fixed;
+	font-size: 16px;
 	top: 0;
 	left: 250px;
-	width: 71%;
+	width: 100%;
 	z-index: 1000;
 }
+
 #edit-mode-banner i {
 	margin-right: 10px;
 }
