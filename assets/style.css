@@ -75,7 +75,6 @@ h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
 }
 
 h2{
@@ -88,7 +87,6 @@ nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
 }
 nav li {
 	padding: 0 10px;
@@ -174,9 +172,8 @@ margin: auto;
 }
 #contact > * {
 	text-align: center;
-
 }
-#contact h2{
+#contact h2 {
 	margin-bottom: 20px;
 }
 #contact form {
@@ -200,7 +197,7 @@ margin: auto;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"]{
+input[type="submit"] {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
@@ -221,6 +218,28 @@ footer nav ul {
 header a, #modifier {
     text-decoration: none;
     color: inherit;
+}
+
+/* Section "modifier" */
+
+.container-projets {
+	display: flex; /* Active Flexbox */
+	align-items: center; /* Aligne verticalement "Mes projets" et "modifier" */
+	justify-content: center; /* Centre horizontalement l'ensemble */
+	gap: 30px; /* Espacement entre "Mes projets" et "modifier" */
+	padding-top: 90px;
+	padding-bottom: 65px;
+}
+
+.edit {
+	font-size: 16px;
+	color: #000;
+}
+  
+/* Icône */
+.icon {
+	width: 20px;
+	height: 20px;
 }
 
 
@@ -288,7 +307,7 @@ header a, #modifier {
 	position: fixed; /* Reste en place */
 	z-index: 1; /* Place la modale au-dessus de tout */
 	left: 0; /* Positionne la modale en haut à gauche */
-	top: 0;
+	top: 0; 
 	width: 100%;
 	height: 100%;
 	overflow: auto; /* Ajoute scrollbar si nécessaire */
@@ -373,7 +392,7 @@ h3 {
 
 .divider { /* Ligne de séparation */
 	width: 420px;
-	border: 1px solid #B3B3B3; /* Couleur et épaisseur de la ligne */
+	border: 1px solid #B3B3B3;
 	margin-top: 60px;
 	margin-bottom: 40px;
 }
@@ -480,45 +499,4 @@ padding-top: 15px;
 #edit-mode-banner i {
 	margin-right: 10px;
 }
-
-
-/* Section "modifier" */
-
-.container-projets {
-	display: flex; /* Active Flexbox */
-	align-items: center; /* Aligne verticalement "Mes projets" et "modifier" */
-	justify-content: center; /* Centre horizontalement l'ensemble */
-	gap: 30px; /* Espacement entre "Mes projets" et "modifier" */
-	padding-top: 90px;
-	padding-bottom: 65px;
-}
-
-.edit {
-	font-size: 16px;
-	color: #000;
-}
-  
-  /* Icône */
-.icon {
-	width: 20px;
-	height: 20px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

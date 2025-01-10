@@ -47,7 +47,7 @@ function setFigure(data) {
         const id = data.id;
         try {
             const response = await fetch(`http://localhost:5678/api/works/${id}`, { // Envoie une requête DELETE à l'API
-                method: 'DELETE', 
+                method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
@@ -55,10 +55,10 @@ function setFigure(data) {
             if (response.ok) {
                 figure.remove(); // Supprime la figure de la galerie
                 modalFigure.remove(); // Supprime la figure de la modale
-            } else { 
+            } else {
                 console.error('Suppression figure depuis API impossible'); // Affiche un message d'erreur
             }
-        } catch (error) { 
+        } catch (error) {
             console.error('Error:', error);
         }
     });
@@ -66,6 +66,7 @@ function setFigure(data) {
 
 // GESTION DES CATEGORIES et FILTRES
 
+// Fonction pour récupérer les catégories et les afficher
 async function getCategories() { // fonction asynchrone pour gérer les opérations nécessitant des délais
     const url = "http://localhost:5678/api/categories"; // Définit l'URL de l'API qui retourne les données des categories (URL issue du Swagger Get/Works/categories)
     try {
@@ -102,9 +103,9 @@ async function getCategories() { // fonction asynchrone pour gérer les opérati
         console.log(error.message);
     }
 }
-getCategories();
+getCategories(); // Appelle la fonction pour récupérer les catégories et les afficher
 
-
+// Fonction pour créer un bouton de filtre et l'ajouter à la div-container
 function setFilter(data) {
     const div = document.createElement("div"); // Crée une nouvelle balise <div>
     div.innerHTML = data.name; // Définit le contenu de la div avec le nom de la catégorie
@@ -122,6 +123,7 @@ function setFilter(data) {
     document.querySelector(".div-container").append(div); // Ajoute une div enfant de la div-container
 }
 
+// Fonction pour définir le bouton de filtre actif
 function setActiveFilter(activeDiv) {
     // Supprime la classe active de tous les boutons de filtre
     const filters = document.querySelectorAll(".div-container > div");
@@ -196,27 +198,27 @@ document.querySelector(".back-button").addEventListener("click", () => {
     clearAddPhotoModal();
 });
 
-// Liste déroulante des catégories
+// Fonction pour liste déroulante des catégories
 async function CategoryListChoice() {
     const url = "http://localhost:5678/api/categories";
     try {
-        const response = await fetch(url);
+        const response = await fetch(url); // Envoie une requête GET à l'API
         if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
+            throw new Error(`Response status: ${response.status}`); // Si la réponse n'est pas réussie
         }
-        const categories = await response.json();
+        const categories = await response.json(); // Si la réponse est réussie, fetch la réponse au format json
         const categorySelect = document.getElementById("photo-category");
-        categories.forEach(category => {
-            const option = document.createElement("option");
-            option.value = category.id;
-            option.textContent = category.name;
-            categorySelect.appendChild(option);
+        categories.forEach(category => { // Parcourt chaque élément du tableau JSON
+            const option = document.createElement("option"); // Crée une nouvelle balise <option>
+            option.value = category.id; // Définit la valeur de l'option
+            option.textContent = category.name; // Définit le texte de l'option
+            categorySelect.appendChild(option); // Ajoute l'option à la liste déroulante
         });
     } catch (error) {
         console.log(error.message);
     }
 }
-CategoryListChoice();
+CategoryListChoice(); // Appelle la fonction pour afficher la liste déroulante des catégories
 
 
 // Fonction Miniature bouton ajout image
@@ -242,7 +244,7 @@ function handleThumbnailPreview(event) {
 document.getElementById("upload-photo-button").addEventListener("change", handleThumbnailPreview);
 
 
-// Activer/désactiver le bouton "Valider" en fonction des champs remplis
+// Active/désactive le bouton "Valider" en fonction des champs remplis
 function toggleValidateButton() {
     const title = document.getElementById("photo-title").value;
     const category = document.getElementById("photo-category").value;
@@ -250,7 +252,7 @@ function toggleValidateButton() {
     const file = fileInput.files[0];
     const validateButton = document.getElementById("validate-photo-button");
 
-    if (title && category && file) {
+    if (title && category && file) { // Vérifie si tous les champs sont remplis
         validateButton.classList.remove("buttondisabled");
     } else {
         validateButton.classList.add("buttondisabled");
@@ -260,7 +262,7 @@ document.getElementById("photo-title").addEventListener("input", toggleValidateB
 document.getElementById("photo-category").addEventListener("change", toggleValidateButton);
 document.getElementById("upload-photo-button").addEventListener("change", toggleValidateButton);
 
-// Ajouter l'image à la galerie et à l'API
+// Ajoute l'image à la galerie et à l'API
 document.getElementById("validate-photo-button").addEventListener("click", async () => {
     const title = document.getElementById("photo-title").value; // Récupère le titre de la photo
     const category = document.getElementById("photo-category").value; // Récupère la catégorie
@@ -271,13 +273,13 @@ document.getElementById("validate-photo-button").addEventListener("click", async
         const formData = new FormData(); // Crée un objet FormData
         formData.append("title", title); // Ajoute le titre à l'objet FormData
         formData.append("category", category); // Ajoute la catégorie
-        formData.append("image", file);
+        formData.append("image", file); // Ajoute l'image
 
         try {
             const response = await fetch("http://localhost:5678/api/works", { // Envoie une requête POST à l'API
                 method: "POST",
                 headers: {
-                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                    "Authorization": `Bearer ${localStorage.getItem("token")}` // Ajoute le token d'authentification
                 },
                 body: formData // Envoie l'objet FormData
             });
@@ -305,7 +307,7 @@ document.getElementById("validate-photo-button").addEventListener("click", async
 });
 
 // Fonction pour vider les champs de la modale d'ajout de photo
-function clearAddPhotoModal() { 
+function clearAddPhotoModal() {
     document.getElementById("photo-title").value = ""; // Efface le titre
     document.getElementById("photo-category").value = ""; // Efface la catégorie
     const photoUploadBox = document.querySelector(".photo-upload-box");
@@ -314,12 +316,6 @@ function clearAddPhotoModal() {
         <label for="upload-photo-button" class="button-upload-box">+ Ajouter une photo</label>
         <input type="file" id="upload-photo-button" class="button-upload-box" accept="image/png, image/jpeg">
         <p>jpg, png : 4mo max</p>
-    `;
+    `; // Réinitialise le contenu de la boîte de sélection d'image
     document.getElementById("upload-photo-button").addEventListener("change", handleThumbnailPreview); // Ré-attache l'écouteur d'événement pour la fct Miniature bouton ajout image
 }
-
-
-
-
-
-

@@ -1,120 +1,128 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Sophie Bluel - Architecte d'intérieur</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+		rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
-<header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	<nav>
-		<ul>
-			<li><a href="#portfolio">projets</a></li>
-			<li><a href="#contact">contact</a></li>
-			<li><a href="login.html" id="login-logout">login</a></li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
-</header>
-<main>
-	<section id="introduction">
-		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="portrait de Sophie Bluel">
-		</figure>
-		<article>
-			<h2>Designer d'espace</h2>
-			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
-			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
-			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
-		</article>
-	</section>
-	<section id="portfolio">
-		<div class="container-projets">			
-			<h2 class="title">Mes Projets</h2>			
-			<div class="edit">
-			  <a href="#" id="modifier">
-				<i class="fa-regular fa-pen-to-square"></i>
-				<span>modifier</span>
-			  </a>			
-			</div>			
-		</div>
-		  
-		<div class="div-container">
-			<div id="filter-all">Tous</div>
-		</div>
-		<div class="gallery">
-			<!-- Suppression des travaux qui étaient présents en dur en HTML, remplacés par JS -->
-		</div>
-	</section>
-	<section id="contact">
-		<h2>Contact</h2>
-		<p>Vous avez un projet ? Discutons-en !</p>
-		<form action="#" method="post">
-			<label for="name">Nom</label>
-			<input type="text" name="name" id="name">
-			<label for="email">Email</label>
-			<input type="email" name="email" id="email">
-			<label for="message">Message</label>
-			<textarea name="message" id="message" cols="30" rows="10"></textarea>
-			<input type="submit" value="Envoyer">
-		</form>
-	</section>
-</main>
+	<header>
+		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		<nav>
+			<ul>
+				<li><a href="#portfolio">projets</a></li>
+				<li><a href="#contact">contact</a></li>
+				<li><a href="login.html" id="login-logout">login</a></li>
+				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section id="introduction">
+			<figure>
+				<img src="./assets/images/sophie-bluel.png" alt="portrait de Sophie Bluel">
+			</figure>
+			<article>
+				<h2>Designer d'espace</h2>
+				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
+					finale du chantier.</p>
+				<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les
+					couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du
+					chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
+				<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG,
+					décorateur(trice)</p>
+			</article>
+		</section>
+		<section id="portfolio">
+			<div class="container-projets">
+				<h2 class="title">Mes Projets</h2>
+				<div class="edit">
+					<a href="#" id="modifier">
+						<i class="fa-regular fa-pen-to-square"></i>
+						<span>modifier</span>
+					</a>
+				</div>
+			</div>
 
-<!-- Modale Galerie -->
-<div class="modal" id="gallery-modal">
-	<div class="modal-content">
-		<span class="close-button">&times;</span>
-		<h3>Galerie photo</h3>
-		<!-- Contenu de la modale -->
-		<div class="modal-gallery"></div>
-		<hr class="divider">
-		<button class="button" id="add-photo-button">Ajouter une photo</button>
+			<div class="div-container">
+				<div id="filter-all">Tous</div>
+			</div>
+			<div class="gallery">
+				<!-- Suppression des travaux qui étaient présents en dur en HTML, remplacés par JS -->
+			</div>
+		</section>
+		<section id="contact">
+			<h2>Contact</h2>
+			<p>Vous avez un projet ? Discutons-en !</p>
+			<form action="#" method="post">
+				<label for="name">Nom</label>
+				<input type="text" name="name" id="name">
+				<label for="email">Email</label>
+				<input type="email" name="email" id="email">
+				<label for="message">Message</label>
+				<textarea name="message" id="message" cols="30" rows="10"></textarea>
+				<input type="submit" value="Envoyer">
+			</form>
+		</section>
+	</main>
+
+	<!-- Modale Galerie -->
+	<div class="modal" id="gallery-modal">
+		<div class="modal-content">
+			<span class="close-button">&times;</span>
+			<h3>Galerie photo</h3>
+			<!-- Contenu de la modale -->
+			<div class="modal-gallery"></div>
+			<hr class="divider">
+			<button class="button" id="add-photo-button">Ajouter une photo</button>
+		</div>
 	</div>
-</div>
 
-<!-- Modale Ajout Photo -->
-<div class="modal" id="add-photo-modal">
-	<div class="modal-content">
-		<span class="back-button"><i class="fa-solid fa-arrow-left"></i></span>
-		<span class="close-button">&times;</span>
-		<h3>Ajout photo</h3>
+	<!-- Modale Ajout Photo -->
+	<div class="modal" id="add-photo-modal">
+		<div class="modal-content">
+			<span class="back-button"><i class="fa-solid fa-arrow-left"></i></span>
+			<span class="close-button">&times;</span>
+			<h3>Ajout photo</h3>
 			<!-- Encadré pour ajouter une photo -->
-		<div class="photo-upload-box">
-			<i class="fa-regular fa-image"></i>
-			<label for="upload-photo-button" class="button-upload-box">+ Ajouter une photo</label>
-			<input type="file" id="upload-photo-button" class="button-upload-box" accept="image/png, image/jpeg">
-			<p>jpg, png : 4mo max</p>
+			<div class="photo-upload-box">
+				<i class="fa-regular fa-image"></i>
+				<label for="upload-photo-button" class="button-upload-box">+ Ajouter une photo</label>
+				<input type="file" id="upload-photo-button" class="button-upload-box" accept="image/png, image/jpeg">
+				<p>jpg, png : 4mo max</p>
+			</div>
+			<!-- Contenu de la modale -->
+			<form id="add-photo-form">
+				<label for="photo-title">Titre</label>
+				<input type="text" id="photo-title" name="photo-title" maxlength="40">
+				<label for="photo-category">Catégorie</label>
+				<select id="photo-category" name="photo-category">
+					<option value="" selected disabled></option> <!-- champ vide -->
+					<!-- Les catégorie seront ajoutées via JS -->
+				</select>
+			</form>
+			<hr class="divider">
+			<button class="button buttondisabled" id="validate-photo-button">Valider</button>
 		</div>
-		<!-- Contenu de la modale -->
-		<form id="add-photo-form">
-			<label for="photo-title">Titre</label>
-			<input type="text" id="photo-title" name="photo-title" maxlength="40">			
-			<label for="photo-category">Catégorie</label>
-			<select id="photo-category" name="photo-category">
-				<option value="" selected disabled></option> <!-- champ vide -->
-				<!-- Les catégorie seront ajoutées via JS -->
-			</select>
-		</form>
-		<hr class="divider">
-		<button class="button buttondisabled" id="validate-photo-button">Valider</button>
 	</div>
-</div>
 
-<footer>
-	<nav>
-		<ul>
-			<li>Mentions Légales</li>
-		</ul>
-	</nav>
-</footer>
-<script src="/js/script.js"></script>
+	<footer>
+		<nav>
+			<ul>
+				<li>Mentions Légales</li>
+			</ul>
+		</nav>
+	</footer>
+	<script src="/js/script.js"></script>
 </body>
+
 </html>

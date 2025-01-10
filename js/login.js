@@ -1,4 +1,5 @@
 // FORMULAIRE DE CONNEXION
+
 const loginForm = document.getElementById("login-form");
 console.log(loginForm);
     loginForm.addEventListener("submit", async function(event) { // Ecouteur d'événement validation formulaire de connexion (clic ou entrée)
@@ -12,7 +13,7 @@ console.log(loginForm);
             const response = await fetch("http://localhost:5678/api/users/login", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json" // Type de contenu envoyé au serveur
                 },
                 body: JSON.stringify({ email, password }) // Convertit les données en chaîne de caractères JSON
             });
@@ -21,7 +22,7 @@ console.log(loginForm);
                 throw new Error(`Erreur: ${response.statusText}`); // si pas réussie
             }
 
-            const data = await response.json();
+            const data = await response.json(); // Convertit la réponse en objet JSON
             
             // Stocke le token dans le localStorage
             localStorage.setItem("token", data.token);
@@ -37,7 +38,7 @@ console.log(loginForm);
         // Met en gras le menu actif login
         document.addEventListener("DOMContentLoaded", function() {
             const loginLink = document.querySelector('a[href="login.html"]');
-            if (loginLink) {
-                loginLink.classList.add("active-menu");
+            if (loginLink) { // Si la page actuelle est login.html
+                loginLink.classList.add("active-menu"); // Ajoute la classe active-menu
             }
         });
